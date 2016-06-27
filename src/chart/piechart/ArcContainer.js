@@ -2,9 +2,10 @@ import React, {PropTypes} from 'react';
 import d3 from 'd3';
 import Arc from './Arc';
 import Legend from './Legend';
+import {Circle} from '../shapes'
 
 const ArcContainer = (props) => {
-  const {data, values, labels, transform, innerRadius,
+  const {values, labels, transform, innerRadius,
     outerRadius,colors, colorAccessor,stroke, strokeWidth} = props;
 
     //Pie Layout.
@@ -17,7 +18,6 @@ const ArcContainer = (props) => {
     const arcs = arcData.map((arc, index) => {
       return (
         <Arc key={index}
-            label={labels[index]}
             value={values[index]}
             startAngle={arc.startAngle}
             endAngle={arc.endAngle}
@@ -25,23 +25,28 @@ const ArcContainer = (props) => {
             innerRadius={innerRadius}
             stroke={stroke}
             strokeWidth={strokeWidth}
-            fill={colors(colorAccessor(data[index], index))} />
+            fill={colors(colorAccessor(index))} />
       );
     });
+
     //Legends
-    const legends = arcData.map((arc, index) => {
+    const legends = labels.map((label, index) => {
       return (
         <Legend key={index}
             position={index}
             className="legend"
-            label={labels[index]}
+            label={label}
             colors={colors}
-            fill={colors(colorAccessor(data[index], index))} />
+            fill={colors(colorAccessor(index))} />
       );
     });
 
+    //Inner circle radius.
+    const innerCircleRadius = Math.min(innerRadius, outerRadius) - 5;
+
     return (
       <g transform={transform} >
+          <Circle radius={innerCircleRadius} />
           {arcs}
           {legends}
       </g>
@@ -49,7 +54,6 @@ const ArcContainer = (props) => {
 };
 
 ArcContainer.propTypes = {
-  data: PropTypes.array,
   values: PropTypes.array,
   labels: PropTypes.array,
   transform: PropTypes.string,

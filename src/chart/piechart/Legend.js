@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Rectangle} from '../shapes';
 
 const Legend = ({position, label, className, colors, legendSize, legendSpacing, fill}) => {
   const height = legendSize + legendSpacing;
@@ -13,7 +14,7 @@ const Legend = ({position, label, className, colors, legendSize, legendSpacing, 
 
   return (
     <g className={className} transform={transform}>
-      <rect width={height - legendSize} height={legendSize} style={legendStyle} />
+      <Rectangle width={height - legendSize} height={legendSize} style={legendStyle} />
       <text x={height - legendSpacing} y={legendSize - legendSpacing}>
         {label}
       </text>

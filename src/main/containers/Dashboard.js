@@ -2,8 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import {Container} from '../../base/components';
 import PieChart from '../../chart/piechart/PieChart';
 import {connect} from 'react-redux';
+import {update} from '../actions/action';
 
-@connect(state => state, null)
+@connect(state => state, {update})
 export default class Dashboard extends Component {
   static propTypes = {
     className:PropTypes.string
@@ -11,18 +12,27 @@ export default class Dashboard extends Component {
 
   constructor(props){
     super(props);
-}
+  }
+
+  //This is done just to check how update is done. svg rendering.
+  //TODO : Remove this later
+  onClick(){
+    const {update} = this.props;
+    update();
+  }
 
   render(){
     const {chart} = this.props;
     return (
-      <Container className="main-container">
+      <Container className="chart-container">
           <PieChart
             className="pie-chart"
             width="500"
             height="400"
             data={chart}
-            title="Pie Chart"/>
+            strokeWidth="3"
+            title="Donut Chart"/>
+            <button className="primary" type="button" onClick={::this.onClick}>Update</button>
       </Container>
     );
   }

@@ -10,6 +10,7 @@ export default class PieChart extends Component {
 
   //Component Prop Types.
   static propTypes = {
+    className:PropTypes.string,
     data:PropTypes.array,
     outerRadius: PropTypes.number,
     innerRadius: PropTypes.number,
@@ -40,7 +41,7 @@ export default class PieChart extends Component {
     stroke:'#ffffff',
     strokeWidth:1,
     colors: d3.scale.category20c(), //Color scale from d3 category.
-    colorAccessor: (d, idx) => idx
+    colorAccessor: (idx) => idx
   }
 
   constructor(props){
@@ -48,7 +49,7 @@ export default class PieChart extends Component {
   }
 
   render(){
-    const {title, cx, cy, width, height, data, colors, colorAccessor ,
+    const {className, title, cx, cy, width, height, data, colors, colorAccessor ,
       outerRadius, innerRadius, stroke, strokeWidth} = this.props;
     //position the chart
     const transform = `translate(${cx || width / 2},${cy || height / 2})`;
@@ -64,9 +65,8 @@ export default class PieChart extends Component {
     const pieOuterRadius = outerRadius || radius - 50;
 
     return(
-      <Chart title={title} width={width} height={height}>
+      <Chart className={className} title={title} width={width} height={height}>
           <ArcContainer
-            data={data}
             labels= {labels}
             values={values}
             colors={colors}
