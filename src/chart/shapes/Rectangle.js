@@ -5,7 +5,7 @@ import React, {PropTypes} from 'react';
  @param width  width of rectangle.
  @param height height of rectangle.
  @param style object containing style properties (fill, stroke, stroke-width etc..).
- @return ReactElement Rectangle
+ @return React.Element Rectangle
 
  Usage : <Rectangle width="22" height="8" style={{fill:"#ffffff", stroke-width:1}}/>
 */

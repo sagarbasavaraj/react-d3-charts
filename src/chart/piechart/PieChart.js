@@ -4,7 +4,8 @@ import Chart from '../common/Chart';
 import ArcContainer from './ArcContainer';
 
 /*
-  Component to display pie chart.
+  Pie Chart component.
+  Use this component to render pie chart.
 */
 export default class PieChart extends Component {
 
@@ -16,7 +17,10 @@ export default class PieChart extends Component {
     innerRadius: PropTypes.number,
     cx: PropTypes.number,
     cy: PropTypes.number,
-    colors: PropTypes.func,
+    colors: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.array
+    ]),
     colorAccessor: PropTypes.func,
     title: PropTypes.string,
     height: PropTypes.oneOfType([

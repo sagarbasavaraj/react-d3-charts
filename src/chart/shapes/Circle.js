@@ -6,7 +6,7 @@ import React, {PropTypes} from 'react';
  @param cy vertical position of circle.
  @param radius radius of the circle.
  @param style object containing style properties (fill, stroke, stroke-width etc..).
- @return ReactElement Circle
+ @return React.Element Circle
 
  Usage : <Circle cx="0"
               cy="0"

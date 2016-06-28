@@ -14,7 +14,7 @@ export default class Dashboard extends Component {
     super(props);
   }
 
-  //This is done just to check how update is done. svg rendering.
+  //Check re-rendering of svg element.
   //TODO : Remove this later
   onClick(){
     const {update} = this.props;

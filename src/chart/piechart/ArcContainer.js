@@ -65,7 +65,10 @@ ArcContainer.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  colors: PropTypes.func,
+  colors: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array
+  ]),
   colorAccessor: PropTypes.func,
   stroke:PropTypes.string,
   strokeWidth:PropTypes.oneOfType([
