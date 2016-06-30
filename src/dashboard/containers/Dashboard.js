@@ -23,6 +23,42 @@ export default class Dashboard extends Component {
 
   render(){
     const {chart} = this.props;
+    //Chart series
+    const chartSeries = [
+      {
+        'name':'One',
+        'color':'red'
+      },
+      {
+        'name':'Two',
+        'color':'green'
+      },
+      {
+        'name':'Three',
+        'color':'grey'
+      },
+      {
+        'name':'Four',
+        'color':'blue'
+      },
+      {
+        'name':'Five',
+        'color':'yellow'
+      },
+      {
+        'name':'Six',
+        'color':'orange'
+      },
+      {
+        'name':'Seven',
+        'color':'blue'
+      },
+      {
+        'name':'Eight',
+        'color':'grey'
+      }
+    ];
+
     return (
       <Container className="chart-container">
           <PieChart
@@ -30,9 +66,9 @@ export default class Dashboard extends Component {
             width="500"
             height="400"
             data={chart}
+            chartSeries={chartSeries}
             strokeWidth="3"
             title="Donut Chart"/>
-            <button className="primary" type="button" onClick={::this.onClick}>Update</button>
       </Container>
     );
   }

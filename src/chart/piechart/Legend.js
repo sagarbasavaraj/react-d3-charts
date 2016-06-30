@@ -1,12 +1,8 @@
 import React, {PropTypes} from 'react';
 import {Rectangle} from '../shapes';
 
-const Legend = ({position, label, className, colors, legendSize, legendSpacing, fill}) => {
+const Legend = ({transform, label, className, legendSize, legendSpacing, fill}) => {
   const height = legendSize + legendSpacing;
-  const offset =  height * colors.domain().length / 2;
-  const horz = -1.0 * legendSize;
-  const vert = position * height - offset;
-  const transform = `translate(${horz}, ${vert})`;
   const legendStyle = {
     fill:fill,
     stroke:fill
@@ -29,13 +25,21 @@ Legend.defaultProps = {
 }
 
 Legend.propTypes = {
-  position:PropTypes.any,
-  label:PropTypes.any,
-  className:PropTypes.any,
-  legendSize:PropTypes.any,
-  legendSpacing:PropTypes.any,
-  fill:PropTypes.any,
-  colors:PropTypes.any,
+  transform:PropTypes.string,
+  label:PropTypes.string,
+  className:PropTypes.string,
+  legendSize:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  legendSpacing:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  fill:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ])
 }
 
 export default Legend;

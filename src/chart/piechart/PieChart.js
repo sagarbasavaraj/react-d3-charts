@@ -13,6 +13,7 @@ export default class PieChart extends Component {
   static propTypes = {
     className:PropTypes.string,
     data:PropTypes.array,
+    chartSeries:PropTypes.array,
     outerRadius: PropTypes.number,
     innerRadius: PropTypes.number,
     cx: PropTypes.number,
@@ -21,7 +22,6 @@ export default class PieChart extends Component {
       PropTypes.func,
       PropTypes.array
     ]),
-    colorAccessor: PropTypes.func,
     title: PropTypes.string,
     height: PropTypes.oneOfType([
       PropTypes.string,
@@ -44,8 +44,7 @@ export default class PieChart extends Component {
     title:'',
     stroke:'#ffffff',
     strokeWidth:1,
-    colors: d3.scale.category20c(), //Color scale from d3 category.
-    colorAccessor: (idx) => idx
+    colors: d3.scale.category20c() //Color scale from d3 category.
   }
 
   constructor(props){
@@ -53,14 +52,10 @@ export default class PieChart extends Component {
   }
 
   render(){
-    const {className, title, cx, cy, width, height, data, colors, colorAccessor ,
-      outerRadius, innerRadius, stroke, strokeWidth} = this.props;
+    const {className, title, cx, cy, width, height, data, colors,
+      outerRadius, chartSeries, innerRadius, stroke, strokeWidth} = this.props;
     //position the chart
     const transform = `translate(${cx || width / 2},${cy || height / 2})`;
-    //Get values from data
-    const values = data.map((item) => item.value);
-    //Get lables to be displayed from data.
-    const labels = data.map((item) => item.label);
     //Calculate radius
     const radius = Math.min(width, height) / 2;
     //Pie chart inner radius
@@ -71,10 +66,9 @@ export default class PieChart extends Component {
     return(
       <Chart className={className} title={title} width={width} height={height}>
           <ArcContainer
-            labels= {labels}
-            values={values}
+            data={data}
+            chartSeries={chartSeries}
             colors={colors}
-            colorAccessor={colorAccessor}
             transform={transform}
             stroke={stroke}
             strokeWidth={strokeWidth}

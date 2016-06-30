@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import d3 from 'd3';
 
 const Arc = (props) => {
-  const {startAngle, value, endAngle, innerRadius, outerRadius,
+  const {startAngle, endAngle, innerRadius, outerRadius,
     stroke, fill, strokeWidth} = props;
 
   //Arc shape.
@@ -23,7 +23,6 @@ const Arc = (props) => {
 }
 
 Arc.propTypes = {
-  value:PropTypes.number,
   innerRadius: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

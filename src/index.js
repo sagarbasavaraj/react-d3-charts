@@ -5,9 +5,9 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import {Router, browserHistory} from 'react-router';
 import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux';
 
-import reducers from './main/reducers';
+import reducers from './dashboard/reducers';
 import Routes from './routes';
-import initialState from './main/initialState'
+import initialState from './dashboard/initialState'
 
 const middleware = applyMiddleware(routerMiddleware(browserHistory));
 const store = compose(middleware)(createStore)(reducers, initialState);
