@@ -1,7 +1,7 @@
 const updatedData = {
     chart: [
       {
-       "label": "Oneee",
+       "label": "One",
        "value" : 10
       } ,
      {

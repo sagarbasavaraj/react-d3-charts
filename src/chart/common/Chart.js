@@ -17,7 +17,8 @@ export default class Chart extends Component{
       PropTypes.string,
       PropTypes.number,
     ]),
-    viewBox:PropTypes.object,
+    viewBox:PropTypes.string,
+    preserveAspectRatio:PropTypes.string,
     title:PropTypes.string
   };
 
@@ -39,10 +40,11 @@ export default class Chart extends Component{
     @return svg.
   */
   _renderChart(){
-    const {width,height,viewBox, children} = this.props;
+    const {width,height,viewBox, preserveAspectRatio, children, } = this.props;
     return(
-      <svg width={width} height={height} viewBox={viewBox}>
-        {children}
+      <svg width={width} height={height} viewBox={viewBox}
+        preserveAspectRatio={preserveAspectRatio}>
+          {children}
       </svg>
     );
   }

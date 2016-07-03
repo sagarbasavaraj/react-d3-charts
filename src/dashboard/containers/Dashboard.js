@@ -65,10 +65,16 @@ export default class Dashboard extends Component {
             className="pie-chart"
             width="500"
             height="400"
+            viewBox="0 0 500 400"
+            preserveAspectRatio="xMinYMin meet"
             data={chart}
             chartSeries={chartSeries}
             strokeWidth="3"
             title="Donut Chart"/>
+          <button type="button" className="primary"
+              onClick={::this.onClick}>
+              Update 
+          </button>
       </Container>
     );
   }

@@ -13,6 +13,8 @@ export default class PieChart extends Component {
   static propTypes = {
     className:PropTypes.string,
     data:PropTypes.array,
+    viewBox:PropTypes.string,
+    preserveAspectRatio:PropTypes.string,
     chartSeries:PropTypes.array,
     outerRadius: PropTypes.number,
     innerRadius: PropTypes.number,
@@ -52,8 +54,9 @@ export default class PieChart extends Component {
   }
 
   render(){
-    const {className, title, cx, cy, width, height, data, colors,
-      outerRadius, chartSeries, innerRadius, stroke, strokeWidth} = this.props;
+    const {className, viewBox, preserveAspectRatio, title, cx, cy, width,
+      height, data, colors, outerRadius, chartSeries, innerRadius,
+      stroke, strokeWidth} = this.props;
     //position the chart
     const transform = `translate(${cx || width / 2},${cy || height / 2})`;
     //Calculate radius
@@ -64,7 +67,11 @@ export default class PieChart extends Component {
     const pieOuterRadius = outerRadius || radius - 50;
 
     return(
-      <Chart className={className} title={title} width={width} height={height}>
+      <Chart className={className} title={title}
+        width={width}
+        height={height}
+        viewBox={viewBox}
+        preserveAspectRatio={preserveAspectRatio}>
           <ArcContainer
             data={data}
             chartSeries={chartSeries}

@@ -16,6 +16,7 @@ const ArcContainer = (props) => {
       if(!item.color)
         item.color = colors(index);
 
+      //look for alternate
       data.forEach((d) => {
         if(d.label === item.name){
           value = d.value;
